@@ -51,14 +51,15 @@ public class NeuralNetworkEns {
         _deltaInputHiddenWeights  = new double[_nbInput][_nbHidden];
         _deltaHiddenOutputWeights = new double[_nbHidden][_nbOutput];
 
-        // Initialisation des poids à des valeurs aléatoires :
+        // Initialisation des poids à des valeurs aléatoires, voir :
+        // Fernández-Redondo, Mercedes, and Carlos Hernández-Espinosa. "Weight initialization methods for multilayer feedforward." In ESANN, pp. 119-124. 2001.
         for (int i = 0; i < _nbInput; i++)
             for (int j = 0; j < _nbHidden; j++)
-                _inputHiddenWeights[i][j] = (Math.random()*2.-1.)*8.; // *8. -> meilleure répartition initiale pour des valeurs entre -1 et 1
+                _inputHiddenWeights[i][j] = (Math.random()*2.-1.)*.05; // [-0.05; 0.05]
 
         for (int i = 0; i < _nbHidden; i++)
             for (int j = 0; j < _nbOutput; j++)
-                _hiddenOutputWeights[i][j] = (Math.random()*2.-1.);
+                _hiddenOutputWeights[i][j] = (Math.random()*2.-1.)*.05; // [-0.05; 0.05]
     }
 
     /*
