@@ -75,10 +75,8 @@ public class TrafficJamAGPlayerEns extends TrafficJamAGPlayer {
 		int i2;
 		for(i2 = 1; i2 < nbIndividus()*tauxSelection(); i2++) {
 			double x1 = Math.random(); // strictement < 1.0
-			//x1 = x1*x1*x1; // pour s'aprocher de 0, donc du meilleur
-			x1 = x1*x1; // pour s'aprocher de 0, donc du meilleur
 			double x2 = Math.random();
-			x2 = x2*x2*x2;
+			x1 = x1*x1;
 			x2 = x2*x2;
 			int n1 = (int)Math.floor(x1*nbIndividus());
 			int n2 = (int)Math.floor(x2*nbIndividus());
