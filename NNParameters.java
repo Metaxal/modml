@@ -98,14 +98,14 @@ public class NNParameters {
 		buttonSpacePanel.add(new JLabel(" ", JLabel.RIGHT), BorderLayout.NORTH);
 		buttonSpacePanel.add(buttonPanel, BorderLayout.CENTER);	
 		
-		_frame = new JFrame("TrafficJam parameters");
+		_frame = new JFrame("NN parameters");
 		
 		JRootPane root = _frame.getRootPane();
 		root.setDefaultButton(ok);
 		
 		_frame.addWindowListener(new WindowAdapter() { 
 			public void windowClosing(WindowEvent e) {
-				System.out.println("TrafficJam parameters closed"); 
+				System.out.println("NN parameters closed"); 
 			}});
 		
 		BorderLayout borderLayout = new BorderLayout();
