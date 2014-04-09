@@ -12,10 +12,14 @@ public class FunctionNNLearner extends FunctionLearner {
 
 		nouveauReseau();
 	}
-	
+
 	public void nouveauReseau() {
 		_net = new NeuralNetwork(1, nbNeurones(), 1, epsilon(), alpha()) ;
 		// 1 entrée, N neurones cachés, 1 sortie
+	}
+
+	public void reset() {
+		nouveauReseau();
 	}
 
 	/*
@@ -25,14 +29,14 @@ public class FunctionNNLearner extends FunctionLearner {
 	 * car dans ce cas on oublierait tout du point précédent, ou presque.
 	 * Il faut donc fournir les exemples d'apprentissage l'un après l'autre, une seule fois,
 	 * mais il faut ensuite répéter cette séquence n fois.
-	 * @param liste : la liste des points, les exemples d'apprentissage 
+	 * @param liste : la liste des points, les exemples d'apprentissage
 	 */
 	public void learn(List liste) {
 		if(liste.size() == 0)
 			return;
-		
+
 		System.out.println("Learning...");
-		
+
 		double[] input = new double[1];
 		double[] output = new double[1];
 		for(int i = 0; i < nbIterations() && !stop(); i++) {
@@ -49,14 +53,11 @@ public class FunctionNNLearner extends FunctionLearner {
 		System.out.println("Learning finished...");
 	}
 
-	public void continueLearning() {
-	}
-
 	/*
 	 * Renvoie la valeur de la fonction calculée par le réseau de neurones en un point
 	 * Appelée par l'interface lors de l'affichage
 	 * @param x : la valeur d'entrée de la fonction
-	 * @return : la valeur de sortie 
+	 * @return : la valeur de sortie
 	 */
 	public double y(double x) {
 		double[] input = new double[1];
