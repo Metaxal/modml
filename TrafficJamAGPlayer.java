@@ -62,7 +62,7 @@ public abstract class TrafficJamAGPlayer extends TrafficJamPlayer implements Act
 
 		_menuLearn.addSeparator();
 
-		_startItem = new JMenuItem("Start");
+		_startItem = new JMenuItem("Start/Reset");
 		_startItem.addActionListener(this);
 		_menuLearn.add(_startItem);
 

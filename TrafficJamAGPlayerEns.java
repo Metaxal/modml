@@ -1,15 +1,15 @@
 import java.util.Arrays;
 
-public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
-	protected TrafficJamAGIndividuLolo[] _individus;
-	protected TrafficJamAGIndividuLolo[] _individus2;
+public class TrafficJamAGPlayerEns extends TrafficJamAGPlayer {
+	protected TrafficJamAGIndividuEns[] _individus;
+	protected TrafficJamAGIndividuEns[] _individus2;
 	protected double _bestFitness;
 	protected double _avgFitness;
 	
-	protected TrafficJamAGIndividuLolo _best;
+	protected TrafficJamAGIndividuEns _best;
 	protected int _numCoup;
 
-	public TrafficJamAGPlayerLolo() {
+	public TrafficJamAGPlayerEns() {
 		super();
 	}
 	
@@ -30,11 +30,11 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 	 */
 	public void genese() {
 		int nbi = nbIndividus();
-		_individus = new TrafficJamAGIndividuLolo[nbi];
-		_individus2 = new TrafficJamAGIndividuLolo[nbi];
+		_individus = new TrafficJamAGIndividuEns[nbi];
+		_individus2 = new TrafficJamAGIndividuEns[nbi];
 		
 		for(int i = 0; i < nbi; i++)
-			_individus[i] = new TrafficJamAGIndividuLolo(this);
+			_individus[i] = new TrafficJamAGIndividuEns(this);
 	}
 	
 	public void learnAG(){
@@ -83,14 +83,14 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 			if(Math.random() < tauxCroisement())
 				_individus2[i2] = _individus[n1].croisement(_individus[n2]);
 			else
-				_individus2[i2] = new TrafficJamAGIndividuLolo(_individus[n1]);
+				_individus2[i2] = new TrafficJamAGIndividuEns(_individus[n1]);
 
 			_individus2[i2].mutation(tauxMutation());
 		}
 		
 		// on comble avec de l'aléatoire
 		for(; i2 < nbIndividus(); i2++) 
-			_individus2[i2] = new TrafficJamAGIndividuLolo(this);
+			_individus2[i2] = new TrafficJamAGIndividuEns(this);
 		
 	}
 	

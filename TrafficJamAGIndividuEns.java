@@ -1,4 +1,4 @@
-public class TrafficJamAGIndividuLolo implements Comparable {
+public class TrafficJamAGIndividuEns implements Comparable {
 	protected int[] _genes;
 	protected double _fitness;
 	protected TrafficJamAGPlayer _player;
@@ -7,7 +7,7 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 
 	public int gene(int i) { if(i < _genes.length) return _genes[i]; else return -1; }
 	
-	public TrafficJamAGIndividuLolo(TrafficJamAGPlayer player) {
+	public TrafficJamAGIndividuEns(TrafficJamAGPlayer player) {
 		_player = player;
 		int nbMax = (_player.nbCases()/2)*(_player.nbCases()/2+1)*2; 
 		// *2 pour laisser un peu de marge pour les coups illégaux
@@ -18,7 +18,7 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 		mutation(1.f);
 	}
 	
-	public TrafficJamAGIndividuLolo(TrafficJamAGIndividuLolo ind) {
+	public TrafficJamAGIndividuEns(TrafficJamAGIndividuEns ind) {
 		_fitness = ind._fitness;		
 		_player = ind._player;
 		
@@ -58,8 +58,8 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 		 */
 	}
 
-	public TrafficJamAGIndividuLolo croisement(TrafficJamAGIndividuLolo  individu) {
-		TrafficJamAGIndividuLolo ind = new TrafficJamAGIndividuLolo(this);
+	public TrafficJamAGIndividuEns croisement(TrafficJamAGIndividuEns  individu) {
+		TrafficJamAGIndividuEns ind = new TrafficJamAGIndividuEns(this);
 		
 		int n1 = (int)Math.floor(Math.random()*_genes.length);
 		int n2 = (int)Math.floor(Math.random()*(_genes.length-n1)) + n1; // n2 compris entre n1 et _genes.length
@@ -71,7 +71,7 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 	}
 
 	public int compareTo(Object obj) {
-		TrafficJamAGIndividuLolo ind = (TrafficJamAGIndividuLolo) obj;
+		TrafficJamAGIndividuEns ind = (TrafficJamAGIndividuEns) obj;
 		
 		if(_fitness > ind._fitness)
 			return -1; // on veut le plus grand fitness au début
