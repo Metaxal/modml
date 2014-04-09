@@ -69,29 +69,37 @@ public class TrafficJamAGPlayerEns extends TrafficJamAGPlayer {
 		_best = _individus[0];
 		_bestFitness = _best.fitness();
 
+		// Sélection élitiste, on conserve le meilleur
+		_individus2[0] = _individus[0];
+
 		// Sélection, croisement, mutation
 		// puis remplissage des cases vides avec de nouveux inidividus aléatoires
-		_individus2[0] = _individus[0];
 		int i2;
 		for(i2 = 1; i2 < nbIndividus()*tauxSelection(); i2++) {
-			double x1 = Math.random(); // strictement < 1.0
-			double x2 = Math.random();
-			x1 = x1*x1;
-			x2 = x2*x2;
-			int n1 = (int)Math.floor(x1*nbIndividus());
-			int n2 = (int)Math.floor(x2*nbIndividus());
-			if(Math.random() < tauxCroisement())
-				_individus2[i2] = _individus[n1].croisement(_individus[n2]);
-			else
-				_individus2[i2] = new TrafficJamAGIndividuEns(_individus[n1]);
+			// Sélection
+			TrafficJamAGIndividuEns indiv1 = _individus[selection()];
+			TrafficJamAGIndividuEns indiv2 = _individus[selection()];
 
+			// Croisement
+			if(Math.random() < tauxCroisement())
+				_individus2[i2] = indiv1.croisement(indiv2);
+			else
+				// Sinon copie de l'ancien individu
+				_individus2[i2] = new TrafficJamAGIndividuEns(indiv1);
+
+			// Mutation
 			_individus2[i2].mutation(tauxMutation());
 		}
 
-		// on comble avec de l'aléatoire
+		// on comble avec de l'aléatoire pour conserver de la diversité
 		for(; i2 < nbIndividus(); i2++)
 			_individus2[i2] = new TrafficJamAGIndividuEns(this);
 
+	}
+
+	public int selection() {
+		double x = Math.random(); // strictement < 1.0
+		return (int)Math.floor(x*x*nbIndividus());
 	}
 
 	public void nouvelleGeneration() {
