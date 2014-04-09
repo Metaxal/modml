@@ -1,10 +1,10 @@
 
 /*
  * @author Pascal Garcia & Laurent Orseau
- * Class NeuralNetwork : fonction de base d'un perceptron multicouches (1 couche cachée)
+ * Class NeuralNetworkEns : fonction de base d'un perceptron multicouches (1 couche cachée)
  * avec rétropropagation et moment.
  */
-public class NeuralNetwork {
+public class NeuralNetworkEns {
 
     private double[]    _inputs; // le vecteur des activations d'entrée, y compris le biais
     private double[]    _hiddens; // le vecteur des activations des neurones cachés
@@ -35,7 +35,7 @@ public class NeuralNetwork {
      * @param epsilon : facteur d'apprentissage
      * @param alpha : moment d'apprentissage / inertie
      */
-    public NeuralNetwork(int nbInput, int nbHidden, int nbOutput, double epsilon, double alpha) {
+    public NeuralNetworkEns(int nbInput, int nbHidden, int nbOutput, double epsilon, double alpha) {
         _nbInput            = nbInput+1; // +1 pour le biais
         _nbHidden           = nbHidden;
         _nbOutput           = nbOutput;

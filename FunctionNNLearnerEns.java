@@ -4,17 +4,17 @@ import java.util.List;
  * @author Laurent Orseau
  *
  */
-public class FunctionNNLearner extends FunctionLearner {
-	private NeuralNetwork _net;
+public class FunctionNNLearnerEns extends FunctionLearner {
+	private NeuralNetworkEns _net;
 
-	public FunctionNNLearner() {
+	public FunctionNNLearnerEns() {
 		super();
 
 		nouveauReseau();
 	}
 
 	public void nouveauReseau() {
-		_net = new NeuralNetwork(1, nbNeurones(), 1, epsilon(), alpha()) ;
+		_net = new NeuralNetworkEns(1, nbNeurones(), 1, epsilon(), alpha()) ;
 		// 1 entrée, N neurones cachés, 1 sortie
 	}
 
