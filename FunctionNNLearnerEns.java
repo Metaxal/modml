@@ -51,6 +51,7 @@ public class FunctionNNLearnerEns extends FunctionLearner {
 		}
 
 		System.out.println("Learning finished...");
+		_net.printWeights();
 	}
 
 	/*

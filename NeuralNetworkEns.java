@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 /*
  * @author Pascal Garcia & Laurent Orseau
@@ -53,6 +54,7 @@ public class NeuralNetworkEns {
 
         // Initialisation des poids à des valeurs aléatoires, voir :
         // Fernández-Redondo, Mercedes, and Carlos Hernández-Espinosa. "Weight initialization methods for multilayer feedforward." In ESANN, pp. 119-124. 2001.
+        // Actually, initializing in [-8, 8] works pretty well because of the high values of the coordinates
         for (int i = 0; i < _nbInput; i++)
             for (int j = 0; j < _nbHidden; j++)
                 _inputHiddenWeights[i][j] = (Math.random()*2.-1.)*.05; // [-0.05; 0.05]
@@ -70,9 +72,9 @@ public class NeuralNetworkEns {
     public double[] result(double[] inputs) {
 
         // on utilise _inputs comme tableau des entrées contenant en plus le biais
-        _inputs[_nbInput-1] = 1.; // biais sur la derniere case du tableau
         for (int i = 0; i < _nbInput-1; i++) // _nbInput == inputs.length normalement !
             _inputs[i] = inputs[i];
+        _inputs[_nbInput-1] = 1.; // biais sur la derniere case du tableau
 
         // maintenant, on ne raisonne plus que sur _inputs,  et pas inputs
 
@@ -174,5 +176,11 @@ public class NeuralNetworkEns {
     private double sigmoidDerivation(double x) {
         double s = sigmoid(x) ;
         return  s * (1. - s) ;
+    }
+
+    public void printWeights() {
+
+        System.out.println("Input->Hidden:\n" + Arrays.deepToString(_inputHiddenWeights).replaceAll("], ", "],").replaceAll(",", "\n "));
+        System.out.println("Hidden->Output:\n" + Arrays.deepToString(_hiddenOutputWeights).replaceAll("],", "],\n") + "\n");
     }
 }

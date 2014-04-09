@@ -46,7 +46,7 @@ public abstract class FunctionLearner implements ActionListener {
 		_nbIterations = 50000;
 		_nbNeurones = 5;
 		_epsilon = 0.01;
-		_alpha = 0.9;
+		_alpha = 0.5;
 		_refreshSpeed = 2000;
 	}
 
