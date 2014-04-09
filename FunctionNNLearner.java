@@ -15,16 +15,16 @@ public class FunctionNNLearner extends FunctionLearner {
 	
 	public void nouveauReseau() {
 		_net = new NeuralNetwork(1, nbNeurones(), 1, epsilon(), alpha()) ;
-		// 1 entrée, N neurones cachés, 1 sortie
+		// 1 entrÃ©e, N neurones cachÃ©s, 1 sortie
 	}
 
 	/*
-	 * Apprentissage des points en fonction du réseau de neurones courant.
+	 * Apprentissage des points en fonction du rÃ©seau de neurones courant.
 	 * Appelle la fonction update du RN une fois par exemple d'apprentissage.
-	 * Il ne faut pas apprendre par coeur un point puis passer au deuxième, etc.,
-	 * car dans ce cas on oublierait tout du point précédent, ou presque.
-	 * Il faut donc fournir les exemples d'apprentissage l'un après l'autre, une seule fois,
-	 * mais il faut ensuite répéter cette séquence n fois.
+	 * Il ne faut pas apprendre par coeur un point puis passer au deuxiÃ¨me, etc.,
+	 * car dans ce cas on oublierait tout du point prÃ©cÃ©dent, ou presque.
+	 * Il faut donc fournir les exemples d'apprentissage l'un aprÃ¨s l'autre, une seule fois,
+	 * mais il faut ensuite rÃ©pÃ©ter cette sÃ©quence n fois.
 	 * @param liste : la liste des points, les exemples d'apprentissage 
 	 */
 	public void learn(List liste) {
@@ -53,9 +53,9 @@ public class FunctionNNLearner extends FunctionLearner {
 	}
 
 	/*
-	 * Renvoie la valeur de la fonction calculée par le réseau de neurones en un point
-	 * Appelée par l'interface lors de l'affichage
-	 * @param x : la valeur d'entrée de la fonction
+	 * Renvoie la valeur de la fonction calculÃ©e par le rÃ©seau de neurones en un point
+	 * AppelÃ©e par l'interface lors de l'affichage
+	 * @param x : la valeur d'entrÃ©e de la fonction
 	 * @return : la valeur de sortie 
 	 */
 	public double y(double x) {

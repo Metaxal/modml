@@ -2,23 +2,23 @@
 
 /*
  * @author Pascal Garcia & Laurent Orseau
- * Class NeuralNetwork : fonction de base d'un perceptron multicouches (1 couche cachée)
- * avec rétropropagation et moment.
+ * Class NeuralNetwork : fonction de base d'un perceptron multicouches (1 couche cachÃ©e)
+ * avec rÃ©tropropagation et moment.
  */
 public class NeuralNetworkEtudiant {
 	
-	private double[]	_inputs; // le vecteur des activations d'entrée, y compris le biais
-	private double[]	_hiddens; // le vecteur des activations des neurones cachés
+	private double[]	_inputs; // le vecteur des activations d'entrÃ©e, y compris le biais
+	private double[]	_hiddens; // le vecteur des activations des neurones cachÃ©s
 	private double[]	_outputs; // le vecteur des activations des neurones de sortie
-	private double[][] _inputHiddenWeights; // poids des entrées vers la couche cachée
-	private double[][] _hiddenOutputWeights; // poids de la couche cachée vers la couche de sortie
+	private double[][] _inputHiddenWeights; // poids des entrÃ©es vers la couche cachÃ©e
+	private double[][] _hiddenOutputWeights; // poids de la couche cachÃ©e vers la couche de sortie
 	// pour la retropropagation :
-	private double[][] _deltaHiddenOutputWeights; // les deltas des connexions cachés->sorties
-	private double[][] _deltaInputHiddenWeights; // les delta des connexions entrées->cachés
+	private double[][] _deltaHiddenOutputWeights; // les deltas des connexions cachÃ©s->sorties
+	private double[][] _deltaInputHiddenWeights; // les delta des connexions entrÃ©es->cachÃ©s
 	
 	
-	private int        _nbInput; // nombre d'entrées, y compris le biais
-	private int        _nbHidden; // nombre de neurones cachés
+	private int        _nbInput; // nombre d'entrÃ©es, y compris le biais
+	private int        _nbHidden; // nombre de neurones cachÃ©s
 	private int        _nbOutput; // nombre de sorties, nombre de neurones de sortie
 	private double     _epsilon; // taux d'apprentissage
 	private double     _alpha; // moment d'apprentissage, inertie
@@ -29,9 +29,9 @@ public class NeuralNetworkEtudiant {
 	public void setAlpha(double a) { _alpha = a; }
 	
 	/*
-	 * Constructeur : Création d'un nouveau réseau de neurones
-	 * @param nbInput : nombres d'entrées dont a besoin l'utilisateur. Ne tient pas compte du biais
-	 * @param nbHidden : nombre de neurones cachés
+	 * Constructeur : CrÃ©ation d'un nouveau rÃ©seau de neurones
+	 * @param nbInput : nombres d'entrÃ©es dont a besoin l'utilisateur. Ne tient pas compte du biais
+	 * @param nbHidden : nombre de neurones cachÃ©s
 	 * @param nbOutput : nombre de neurones en sortie / nombre de sorties
 	 * @param epsilon : facteur d'apprentissage
 	 * @param alpha : moment d'apprentissage / inertie
@@ -43,7 +43,7 @@ public class NeuralNetworkEtudiant {
 		_epsilon            = epsilon;
 		_alpha              = alpha;
 		
-		// Création des tableaux :
+		// CrÃ©ation des tableaux :
 		_inputs = new double[_nbInput];
 		_hiddens = new double[_nbHidden];
 		_outputs = new double[_nbOutput];
@@ -52,45 +52,45 @@ public class NeuralNetworkEtudiant {
 		_deltaInputHiddenWeights  = new double[_nbInput][_nbHidden];
 		_deltaHiddenOutputWeights = new double[_nbHidden][_nbOutput];
 		
-		// Initialisation des poids à des valeurs aléatoires :
+		// Initialisation des poids Ã  des valeurs alÃ©atoires :
 		// ...
 	}
 	
 	/*
-	 * Calcul en passe avant, des entrées vers les sorties, pour obtenir le résultat du réseau. 
-	 * @param entry: le tableau des valeurs des entrées fournies par l'utilisateur. Ne tient pas compte du biais
-	 * @return le vecteur des sorties, mises à jour.
+	 * Calcul en passe avant, des entrÃ©es vers les sorties, pour obtenir le rÃ©sultat du rÃ©seau. 
+	 * @param entry: le tableau des valeurs des entrÃ©es fournies par l'utilisateur. Ne tient pas compte du biais
+	 * @return le vecteur des sorties, mises Ã  jour.
 	 */
 	public double[] result(double[] inputs) {
 		
-		// on utilise _inputs comme tableau des entrées contenant en plus le biais
+		// on utilise _inputs comme tableau des entrÃ©es contenant en plus le biais
 		_inputs[_nbInput-1] = 1.; // biais sur la derniere case du tableau
 		for (int i = 0; i < _nbInput-1; i++) // _nbInput == inputs.length normalement !
 			_inputs[i] = inputs[i];
 		
 		// maintenant, on ne raisonne plus que sur _inputs,  et pas inputs
 		
-		// Sommation pondérée des entrées pour chaque neurone caché :
+		// Sommation pondÃ©rÃ©e des entrÃ©es pour chaque neurone cachÃ© :
 		// ...
 		
-		// calcul de la fonction d'activation de chaque neurone caché :
+		// calcul de la fonction d'activation de chaque neurone cachÃ© :
 		// ...
 		
-		// somme pondérée des activations des neurones cachés pour chaque sortie :
+		// somme pondÃ©rÃ©e des activations des neurones cachÃ©s pour chaque sortie :
 		// ...
 		
-		// activation linéaire, donc pas de fonction d'activation en sortie.
+		// activation linÃ©aire, donc pas de fonction d'activation en sortie.
 		
 		return _outputs ;
 	}
 	
 	/*
-	 * Mise à jour des poids : apprentissage
+	 * Mise Ã  jour des poids : apprentissage
 	 * On calcule l'erreur commise sur chaque sortie,
-	 * que l'on répatie ensuite sur chaque neurone caché.
-	 * On modifie les poids en conséquence.
-	 * @param input : le vecteur des entrées (sans le biais)
-	 * @param output : le vecteur des sorties désirées par l'utilisateur
+	 * que l'on rÃ©patie ensuite sur chaque neurone cachÃ©.
+	 * On modifie les poids en consÃ©quence.
+	 * @param input : le vecteur des entrÃ©es (sans le biais)
+	 * @param output : le vecteur des sorties dÃ©sirÃ©es par l'utilisateur
 	 */
 	public void update(double[] input, double[] output) {
 		
@@ -105,21 +105,21 @@ public class NeuralNetworkEtudiant {
 		// Calcul de l'erreur commise par chaque neurone de sortie :
 		// ...
 		
-		// vecteur de l'erreur répartie sur les neurones cachés :
+		// vecteur de l'erreur rÃ©partie sur les neurones cachÃ©s :
 		double[] delta_hidden = new double[_nbHidden];
 		
-		// Calcul de l'erreur "commise" par chaque neurone caché, proportionnellement à son activation
-		// et à sa contribution à l'erreur de chaque neurone de sortie
+		// Calcul de l'erreur "commise" par chaque neurone cachÃ©, proportionnellement Ã  son activation
+		// et Ã  sa contribution Ã  l'erreur de chaque neurone de sortie
 		// ...
 		
 		
-		// Mise à jours des poids :
+		// Mise Ã  jours des poids :
 		
-		// poids des neurones cachés vers les neurones de sortie
+		// poids des neurones cachÃ©s vers les neurones de sortie
 		// q5 : avec moment d'inertie sur les poids
 		// ...
 		
-		// poids des entrées vers les neurones cachés 
+		// poids des entrÃ©es vers les neurones cachÃ©s 
 		// q5 : avec moment d'inertie sur les poids
 		// ...
 		
@@ -133,7 +133,7 @@ public class NeuralNetworkEtudiant {
 	}
 	
 	/*
-	 * Fonction dérivée de la fonction d'activation 
+	 * Fonction dÃ©rivÃ©e de la fonction d'activation 
 	 */
 	private double sigmoidDerivation(double x) {
 		double s = sigmoid(x) ;

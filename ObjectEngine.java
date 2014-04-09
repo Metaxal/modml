@@ -17,7 +17,7 @@ public class ObjectEngine implements ActionListener {
 	}
 	
 	public void write() {
-		System.out.println("Vous êtes dans ObjectEngine");
+		System.out.println("Vous Ãªtes dans ObjectEngine");
 	}
 	
     public void mouseClicked(int whichButton, int x, int y) {

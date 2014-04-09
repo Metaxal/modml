@@ -66,9 +66,9 @@ public class TicTacToeEngine extends ObjectEngine implements ClassOpener {
 	public void initInterface(Interface i) {
 		super.initInterface(i);
 
-		// ajout du menu propre à TicTacToeEngine
-		// En classe chargée dynamiquement, il est nécessaire de créer les menus
-		// à la volée et non en tête de classe !
+		// ajout du menu propre Ã  TicTacToeEngine
+		// En classe chargÃ©e dynamiquement, il est nÃ©cessaire de crÃ©er les menus
+		// Ã  la volÃ©e et non en tÃªte de classe !
 		_menuTicTacToe = new JMenu("TicTacToe");
 
 		_playItem = new JMenuItem("Play");
@@ -100,14 +100,14 @@ public class TicTacToeEngine extends ObjectEngine implements ClassOpener {
 		if(caller == _classLoadMenuP1)
 		{
 			if(_player1 != null)
-				_player1.terminate(); // supprimer les menus spécifiques	
+				_player1.terminate(); // supprimer les menus spÃ©cifiques	
 			_player1 = (TicTacToePlayer)object; 
 			_player1.init(this, PLAYER1); // ne pas oublier !
 		}
 		else
 		{
 			if(_player2 != null)
-				_player2.terminate(); // supprimer les menus spécifiques	
+				_player2.terminate(); // supprimer les menus spÃ©cifiques	
 			_player2 = (TicTacToePlayer)object; 
 			_player2.init(this, PLAYER2); // ne pas oublier !
 		}
@@ -163,7 +163,7 @@ public class TicTacToeEngine extends ObjectEngine implements ClassOpener {
 									.round(height * 0.6));
 				}
 			}
-		// affichage des valeurs des différentes actions
+		// affichage des valeurs des diffÃ©rentes actions
 
 		if (_board.endOfGame()) {
 			String s = "";
@@ -206,7 +206,7 @@ public class TicTacToeEngine extends ObjectEngine implements ClassOpener {
 	}
 
 	public void ecrire() {
-		System.out.println("Vous êtes dans TicTacToeEngine");
+		System.out.println("Vous Ãªtes dans TicTacToeEngine");
 	}
 
 	public void terminate() {
@@ -229,7 +229,7 @@ public class TicTacToeEngine extends ObjectEngine implements ClassOpener {
 					_currentPlayer = PLAYER1;
 					do {
 						c = player(_currentPlayer).joue();
-						System.out.println("Joueur "+_currentPlayer+" a joué case "+c);
+						System.out.println("Joueur "+_currentPlayer+" a jouÃ© case "+c);
 						if(!_board.joueCase(c, _currentPlayer))
 							continue;
 						

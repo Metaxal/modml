@@ -13,7 +13,7 @@ public class TrafficJamHumanPlayer extends TrafficJamPlayer {
 	
 	public void cliqueCase(int c) {
 		_caseAJouer = c;
-		_engine.joueUnTour(); // on force à jouer le coup
+		_engine.joueUnTour(); // on force Ã  jouer le coup
 	}
 	
 	public int joue() {

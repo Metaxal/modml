@@ -10,11 +10,11 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 	public TrafficJamAGIndividuLolo(TrafficJamAGPlayer player) {
 		_player = player;
 		int nbMax = (_player.nbCases()/2)*(_player.nbCases()/2+1)*2; 
-		// *2 pour laisser un peu de marge pour les coups illégaux
+		// *2 pour laisser un peu de marge pour les coups illÃ©gaux
 		
 		_fitness = -nbMax;
 		
-		_genes = new int[nbMax]; // une majoration du nombre de déplacements possibles (en fait -1)
+		_genes = new int[nbMax]; // une majoration du nombre de dÃ©placements possibles (en fait -1)
 		mutation(1.f);
 	}
 	
@@ -31,8 +31,8 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 		_fitness = 0.;
 		int[] tableauJeu = _player.copieTableauJeu();
 		
-		// ici, il faut appliquer la séquence de jeu définie par les gènes
-		// pour savoir jusqu'où on va dans le jeu.
+		// ici, il faut appliquer la sÃ©quence de jeu dÃ©finie par les gÃ¨nes
+		// pour savoir jusqu'oÃ¹ on va dans le jeu.
 		// le plus loin on va, le meilleur le score.
 		for(int i=0; i < _genes.length && _genes[i] != -1; i++)
 			if(_player.joueCase(tableauJeu, _genes[i]) == 1)
@@ -40,8 +40,8 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 			else
 				_fitness -= 1./(i+1.);
 		/*
-		 * 1./(i+1.) : permet de favoriser les optimisations (enlever les coups illégaux) 
-		 * en favorisant ceux qui sont au début de la séquence.
+		 * 1./(i+1.) : permet de favoriser les optimisations (enlever les coups illÃ©gaux) 
+		 * en favorisant ceux qui sont au dÃ©but de la sÃ©quence.
 		 * On atteint alors moins facilement des minima locaux.
 		 */
 	}
@@ -51,10 +51,10 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 			if(Math.random() < taux)
 				_genes[i] = (int)Math.floor(Math.random() * (_player.nbCases())); // +1 -1 on veut apprendre l'arret du jeu
 		/*
-		 * ceci est une représentation simpliste, mais qui fonctionne pas mal.
-		 * Une meilleure version consisterait à donner plus de coups légaux,
-		 * par exemple à fournir soit jouer à gauche soit jouer à droite 
-		 * (par rapport à la case vide)
+		 * ceci est une reprÃ©sentation simpliste, mais qui fonctionne pas mal.
+		 * Une meilleure version consisterait Ã  donner plus de coups lÃ©gaux,
+		 * par exemple Ã  fournir soit jouer Ã  gauche soit jouer Ã  droite 
+		 * (par rapport Ã  la case vide)
 		 */
 	}
 
@@ -74,7 +74,7 @@ public class TrafficJamAGIndividuLolo implements Comparable {
 		TrafficJamAGIndividuLolo ind = (TrafficJamAGIndividuLolo) obj;
 		
 		if(_fitness > ind._fitness)
-			return -1; // on veut le plus grand fitness au début
+			return -1; // on veut le plus grand fitness au dÃ©but
 		else if(_fitness < ind._fitness)
 			return 1;
 		return 0;

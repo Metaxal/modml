@@ -31,11 +31,11 @@ public class TetrisEngine extends ObjectEngine {
 	protected int[][] _formes= { 
 			{0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0}, // vide
 			{0,1,0,0, 0,1,0,0, 0,1,0,0, 0,1,0,0}, // barre
-			{0,0,0,0, 0,1,1,0, 0,0,1,1, 0,0,0,0}, // S inversé
+			{0,0,0,0, 0,1,1,0, 0,0,1,1, 0,0,0,0}, // S inversÃ©
 			{0,0,0,0, 0,0,1,1, 0,1,1,0, 0,0,0,0}, // S
-			{0,0,0,0, 0,1,1,0, 0,1,1,0, 0,0,0,0}, // carré
+			{0,0,0,0, 0,1,1,0, 0,1,1,0, 0,0,0,0}, // carrÃ©
 			{0,0,0,0, 1,1,1,0, 0,1,0,0, 0,0,0,0}, // T
-			{0,0,0,0, 1,1,1,0, 0,0,1,0, 0,0,0,0}, // L inversé
+			{0,0,0,0, 1,1,1,0, 0,0,1,0, 0,0,0,0}, // L inversÃ©
 			{0,0,0,0, 1,1,1,0, 1,0,0,0, 0,0,0,0}  // L
 	};
 	
@@ -67,30 +67,30 @@ public class TetrisEngine extends ObjectEngine {
 		_couleurs = new Color[_nbFormes];
 		_couleurs[0] = new Color(0,0,0);    // vide
 		_couleurs[1] = new Color(128,0,0);  // barre
-		_couleurs[2] = new Color(0,128,0);  // S inversé
+		_couleurs[2] = new Color(0,128,0);  // S inversÃ©
 		_couleurs[3] = new Color(0,0,128);  // S
-		_couleurs[4] = new Color(128,128,0);// carré
+		_couleurs[4] = new Color(128,128,0);// carrÃ©
 		_couleurs[5] = new Color(128,0,128);// T
-		_couleurs[6] = new Color(0,128,128);// L inversé
+		_couleurs[6] = new Color(0,128,128);// L inversÃ©
 		_couleurs[7] = new Color(80,80,200);// L
 
 		_couleurs2 = new Color[_nbFormes];
 		_couleurs2[0] = new Color(0,0,0);    // vide
 		_couleurs2[1] = new Color(175,0,0);  // barre
-		_couleurs2[2] = new Color(0,175,0);  // S inversé
+		_couleurs2[2] = new Color(0,175,0);  // S inversÃ©
 		_couleurs2[3] = new Color(0,0,175);  // S
-		_couleurs2[4] = new Color(175,175,0);// carré
+		_couleurs2[4] = new Color(175,175,0);// carrÃ©
 		_couleurs2[5] = new Color(150,0,175);// T
-		_couleurs2[6] = new Color(0,175,175);// L inversé
+		_couleurs2[6] = new Color(0,175,175);// L inversÃ©
 		_couleurs2[7] = new Color(100,100,220);// L
 	}
 	
 	public void initInterface(Interface i) {
 		super.initInterface(i);
 		
-		// ajout du menu propre à LearnAG
+		// ajout du menu propre Ã  LearnAG
 		
-		// En classe chargée dynamiquement, il est nécessaire de créer les menus à la volée et non en tête de classe !
+		// En classe chargÃ©e dynamiquement, il est nÃ©cessaire de crÃ©er les menus Ã  la volÃ©e et non en tÃªte de classe !
 		_menuTetris = new JMenu("Tetris");
 
 		_runItem = new JMenuItem("New Game");
@@ -222,7 +222,7 @@ public class TetrisEngine extends ObjectEngine {
 	}
 	
 	// teste si l'emplacement est valide
-	// teste aussi si on a pas dépassé les limites
+	// teste aussi si on a pas dÃ©passÃ© les limites
 	public boolean collision(int[][] forme, int x, int y) {
 		
 		for(int i=0; i < 4; i++)
@@ -267,7 +267,7 @@ public class TetrisEngine extends ObjectEngine {
 	public synchronized void virerLignes() {
 		int nbl = 0;
 		
-		for(int j=0; j < 4 && _posY+j < _nbCasesY; j++) { // attention à bien commencer par la fin
+		for(int j=0; j < 4 && _posY+j < _nbCasesY; j++) { // attention Ã  bien commencer par la fin
 			boolean avirer = true;
 			for(int i = 0; i < _nbCasesX; i++)
 				if(_tableau[i][_posY+j] == 0) {
@@ -291,7 +291,7 @@ public class TetrisEngine extends ObjectEngine {
 	}
 	
 	public synchronized int[][] tourne(int[][] forme) {
-		int n = forme.length; // censé être carré !
+		int n = forme.length; // censÃ© Ãªtre carrÃ© !
 		int[][] fo = new int[n][n];
 		
 		for(int i=0; i < n; i++)

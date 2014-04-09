@@ -82,9 +82,9 @@ public class TrafficJamEngine extends ObjectEngine implements ClassOpener {
 	public void initInterface(Interface i) {
 		super.initInterface(i);
 		
-		// ajout du menu propre à LearnAG
+		// ajout du menu propre Ã  LearnAG
 		
-		// En classe chargée dynamiquement, il est nécessaire de créer les menus à la volée et non en tête de classe !
+		// En classe chargÃ©e dynamiquement, il est nÃ©cessaire de crÃ©er les menus Ã  la volÃ©e et non en tÃªte de classe !
 		_menuTrafficJam = new JMenu("TrafficJam");
 		_params = new TrafficJamParameters(this);
 
@@ -131,27 +131,27 @@ public class TrafficJamEngine extends ObjectEngine implements ClassOpener {
 			_params.getFrame().setVisible(true);
 			return;
 		}
-		super.actionPerformed(event); // au début de la fonction plutôt non ?
+		super.actionPerformed(event); // au dÃ©but de la fonction plutÃ´t non ?
 	}
 	
 	public synchronized void terminate() {
 		// supprimer les menus
 		if(_player != null)
-			_player.terminate(); // à ne pas oublier !
+			_player.terminate(); // Ã  ne pas oublier !
 		
 		_interface.getMenu().removeMenu(_menuTrafficJam);
 	}
 	
 	public void classOpened(Object object, Object caller) {
 		if(_player != null)
-			_player.terminate(); // supprimer les menus spécifiques	
+			_player.terminate(); // supprimer les menus spÃ©cifiques	
 		_player = (TrafficJamPlayer)object; 
 		_player.init(this); // ne pas oublier !
 	}
 	
 
 	public void ecrire() {
-		System.out.println("Vous êtes dans TrafficJam");
+		System.out.println("Vous Ãªtes dans TrafficJam");
 	}
 	
     public synchronized void mouseClicked(int whichButton, int x, int y) {
@@ -253,7 +253,7 @@ public class TrafficJamEngine extends ObjectEngine implements ClassOpener {
 		if(j == -2)
 			System.out.println("Hors limites du tableau : " + xc);
 		else if(j == -1)
-			System.out.println("Coup illégal : " + xc);
+			System.out.println("Coup illÃ©gal : " + xc);
 		/*else
 			System.out.println("Coup ok : " + xc);
 			*/

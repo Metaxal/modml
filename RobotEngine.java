@@ -79,8 +79,8 @@ public class RobotEngine extends ObjectEngine implements ClassOpener {
     public void initInterface(Interface i) {
 	super.initInterface(i);
 		
-	// ajout du menu propre à RobotEngine
-	// En classe chargée dynamiquement, il est nécessaire de créer les menus à la volée et non en tête de classe !
+	// ajout du menu propre Ã  RobotEngine
+	// En classe chargÃ©e dynamiquement, il est nÃ©cessaire de crÃ©er les menus Ã  la volÃ©e et non en tÃªte de classe !
 	_robotMenu = new JMenu("Robot");
 		
 	_buildSubMenu = new JMenu("Build");
@@ -614,7 +614,7 @@ public class RobotEngine extends ObjectEngine implements ClassOpener {
 
 	
     public void write() {
-	System.out.println("Vous êtes dans RobotEngine");
+	System.out.println("Vous Ãªtes dans RobotEngine");
     }
 	
     public void terminate() {

@@ -106,7 +106,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 			gaussFunction();
 			return;
 		}
-		super.actionPerformed(event); // au début de la fonction plutôt non ?
+		super.actionPerformed(event); // au dÃ©but de la fonction plutÃ´t non ?
 	}
 	
 	public void classOpened(Object object, Object caller) {
@@ -117,7 +117,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	}
 	
 	public void write() {
-		System.out.println("Vous êtes dans FunctionEngine");
+		System.out.println("Vous Ãªtes dans FunctionEngine");
 	}
 	
 	public BufferedImage draw(JViewport vp) {

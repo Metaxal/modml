@@ -25,7 +25,7 @@ public abstract class TicTacToePlayer {
 	}
 	
 	public int joue() {
-		// doit retourner la case à jouer
+		// doit retourner la case Ã  jouer
 		return -1;
 	}
 

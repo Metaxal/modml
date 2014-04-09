@@ -3,20 +3,20 @@ import java.util.Arrays;
 /**
  * @author lorseau
  * classe TrafficJamAGPlayerEtudiant
- * appelée par l'interface de jeu à travers les méthodes :
+ * appelÃ©e par l'interface de jeu Ã  travers les mÃ©thodes :
  * 	void resetJeu()
  *  int joue()
  */
 
 public class TrafficJamAGPlayerEtudiant extends TrafficJamAGPlayer {
-	// A FAIRE : ajouter ici les attributs nécessaires
+	// A FAIRE : ajouter ici les attributs nÃ©cessaires
 	// taux de mutation, taux de croisement, nombre d'individus par population, 
-	// nombre de générations avant arrêt de l'apprentissage, 
+	// nombre de gÃ©nÃ©rations avant arrÃªt de l'apprentissage, 
 	// tableau des individus (TrafficJamAGIndividuEtudiant)
 
 	/*
-	 * numéro du prochain coup que l'on va jouer lorsque l'interface appelera notre fonction joue()
-	 * (initialisé à 0, dès qu'on "clique" sur une case, on joue un coup et on passe au coup suivant)  
+	 * numÃ©ro du prochain coup que l'on va jouer lorsque l'interface appelera notre fonction joue()
+	 * (initialisÃ© Ã  0, dÃ¨s qu'on "clique" sur une case, on joue un coup et on passe au coup suivant)  
 	 */
 	protected int _numCoup;
 
@@ -24,50 +24,50 @@ public class TrafficJamAGPlayerEtudiant extends TrafficJamAGPlayer {
 	 * Constructeur
 	 */
 	public TrafficJamAGPlayerEtudiant() {
-		super(); // à laisser : appelle le constructeur de TrafficJamAGPlayer pour faire ses initialisatations
+		super(); // Ã  laisser : appelle le constructeur de TrafficJamAGPlayer pour faire ses initialisatations
 		
-		// A FAIRE : ajouter ici le code nécessaire.
+		// A FAIRE : ajouter ici le code nÃ©cessaire.
 	}
 
 	/*
 	 * Initialisation de la phase d'apprentissage
-	 * Appelée par l'interface lorsque l'utilisateur clique dur LearnAG/Start
+	 * AppelÃ©e par l'interface lorsque l'utilisateur clique dur LearnAG/Start
 	 * mais pas sur LearnAG/Continue 
 	 */
 	public void initLearning() {
-		System.out.println("initLearning étudiant");
-		// A FAIRE : une nouvelle population d'individus initialisés aléatoirement ! 
+		System.out.println("initLearning Ã©tudiant");
+		// A FAIRE : une nouvelle population d'individus initialisÃ©s alÃ©atoirement ! 
 	}
 
 	/*
-	 * Appelée par l'interface lorsque l'utilisateur clique sur TrafficJam/Reset
+	 * AppelÃ©e par l'interface lorsque l'utilisateur clique sur TrafficJam/Reset
 	 */
 	public void resetJeu() {
 		_numCoup = 0; // on recommence le jeu de 0
 	}
 	
 	/*
-	 * Appelée par l'interface lorsque l'utilisateur clique dur LearnAG/Start ou 
+	 * AppelÃ©e par l'interface lorsque l'utilisateur clique dur LearnAG/Start ou 
 	 * sur LearnAG/Continue
 	 */
 	public void learnAG(){
-		System.out.println("learnAG étudiant");
+		System.out.println("learnAG Ã©tudiant");
 		
-		// A FAIRE : sélection/croisement/mutation, le tout sur plusieurs générations
+		// A FAIRE : sÃ©lection/croisement/mutation, le tout sur plusieurs gÃ©nÃ©rations
 		
 		// On peut utiliser Arrays.sort(Truc[] tableau) pour trier le tableau de Trucs 
-		// selon l'ordre défini par la méthode Truc.Compare  
+		// selon l'ordre dÃ©fini par la mÃ©thode Truc.Compare  
 	}
 	
 	/*
-	 * renvoie le coup joué par le joueur courant
-	 * = numéro de la case (0 à gauche)
-	 * Appelé par l'interface lorsque l'utilisateur clique sur TrafficJam/One Turn 
+	 * renvoie le coup jouÃ© par le joueur courant
+	 * = numÃ©ro de la case (0 Ã  gauche)
+	 * AppelÃ© par l'interface lorsque l'utilisateur clique sur TrafficJam/One Turn 
 	 * ou sur LearnAG/Run (-> appels multiples successifs de joue())
-	 * -1 arrête les appels par Run, on arrête de jouer.
+	 * -1 arrÃªte les appels par Run, on arrÃªte de jouer.
 	 */
 	public int joue() {
-		System.out.println("joue étudiant, coup n°" + _numCoup);
+		System.out.println("joue Ã©tudiant, coup nÂ°" + _numCoup);
 		
 		// A FAIRE : renvoyer le coup courant
 		

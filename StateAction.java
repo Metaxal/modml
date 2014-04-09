@@ -1,7 +1,7 @@
 //import java.* ;
 
 /**
- * Couple (Etat, Action) permettant d'associer une action à un état
+ * Couple (Etat, Action) permettant d'associer une action Ã  un Ã©tat
  * 
  * @author Garcia Pascal
  * @see State
@@ -12,11 +12,11 @@ public class StateAction implements Comparable {
     private int  _action;
 
     /**
-     * Crée un couple (Etat, Action)
+     * CrÃ©e un couple (Etat, Action)
      *
      * @author Etudiant
      * @param e objet Etat
-     * @param a entier représentant l'action (la case du Morpion)
+     * @param a entier reprÃ©sentant l'action (la case du Morpion)
      */    
     public StateAction(State s, int a) {
 	_state = s;
@@ -60,11 +60,11 @@ public class StateAction implements Comparable {
     }
 
     /**
-     * Test l'égalité de 2 objets de type EtatAction
+     * Test l'Ã©galitÃ© de 2 objets de type EtatAction
      *
      * @author Etudiant
-     * @param e_a l'objet de type EtatAction à comparer avec l'objet courant
-     * @return true si e_a est identique à l'objet courant, false sinon
+     * @param e_a l'objet de type EtatAction Ã  comparer avec l'objet courant
+     * @return true si e_a est identique Ã  l'objet courant, false sinon
      */    
     public boolean equals(Object o) {
 	if ((o != null) && (o instanceof StateAction)) {

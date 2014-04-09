@@ -36,13 +36,13 @@ public class AGParameters {
 		
 		p.setLayout(new GridLayout(0,2));
 		
-		p.add(new JLabel("# Générations", JLabel.LEFT));
+		p.add(new JLabel("# GÃ©nÃ©rations", JLabel.LEFT));
 		p.add(_nbGenerationsText);
 		
 		p.add(new JLabel("# Individus", JLabel.LEFT));
 		p.add(_nbIndividusText);
 
-		p.add(new JLabel("% Sélection", JLabel.LEFT));
+		p.add(new JLabel("% SÃ©lection", JLabel.LEFT));
 		p.add(_tauxSelectionText);
 
 		p.add(new JLabel("% Mutation", JLabel.LEFT));
@@ -63,7 +63,7 @@ public class AGParameters {
 					int nbI = (new Integer(_nbIndividusText.getText())).intValue();
 					_player.setNbIndividus(nbI);
 
-					// nécessairement après setNbIndividus !!
+					// nÃ©cessairement aprÃ¨s setNbIndividus !!
 					float nbS = (new Float(_tauxSelectionText.getText())).floatValue();
 					_player.setTauxSelection(nbS);
 

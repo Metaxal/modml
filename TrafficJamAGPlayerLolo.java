@@ -25,8 +25,8 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 
 	/*
 	 * Initialise une nouvelle population d'individus
-	 * avec des gènes ayant des valeurs aléatoires,
-	 * donc probablement très mauvaises.
+	 * avec des gÃ¨nes ayant des valeurs alÃ©atoires,
+	 * donc probablement trÃ¨s mauvaises.
 	 */
 	public void genese() {
 		int nbi = nbIndividus();
@@ -69,8 +69,8 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 		_best = _individus[0];
 		_bestFitness = _best.fitness();
 		
-		// Sélection, croisement, mutation
-		// puis remplissage des cases vides avec de nouveux inidividus aléatoires
+		// SÃ©lection, croisement, mutation
+		// puis remplissage des cases vides avec de nouveux inidividus alÃ©atoires
 		_individus2[0] = _individus[0];
 		int i2;
 		for(i2 = 1; i2 < nbIndividus()*tauxSelection(); i2++) {
@@ -78,7 +78,7 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 			x1 = x1*x1*x1; // pour s'aprocher de 0, donc du meilleur
 			double x2 = Math.random();
 			x2 = x2*x2*x2;
-			int n1 = (int)Math.floor(x1*nbIndividus()); // on évite le best ?
+			int n1 = (int)Math.floor(x1*nbIndividus()); // on Ã©vite le best ?
 			int n2 = (int)Math.floor(x2*nbIndividus());
 			if(Math.random() < tauxCroisement())
 				_individus2[i2] = _individus[n1].croisement(_individus[n2]);
@@ -88,7 +88,7 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 			_individus2[i2].mutation(tauxMutation());
 		}
 		
-		// on comble avec de l'aléatoire
+		// on comble avec de l'alÃ©atoire
 		for(; i2 < nbIndividus(); i2++) 
 			_individus2[i2] = new TrafficJamAGIndividuLolo(this);
 		
@@ -100,7 +100,7 @@ public class TrafficJamAGPlayerLolo extends TrafficJamAGPlayer {
 	
 	public int joue() {
 		if(_best != null)
-			return _best.gene(_numCoup++); // séquence des coups du meilleur individu/solution
+			return _best.gene(_numCoup++); // sÃ©quence des coups du meilleur individu/solution
 		else
 			return -1;
 	}

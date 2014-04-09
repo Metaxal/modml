@@ -1,9 +1,9 @@
 import java.* ;
 
 /**
- * Cette classe implémente la politique pseudo-stochastique.<BR>
- * Avec une probabilité epsilon, l'action choisie sera la meilleure possible,
- * avec une probabilité (1.0 - epsilon) on choisira au hazard une des autres actions. 
+ * Cette classe implÃ©mente la politique pseudo-stochastique.<BR>
+ * Avec une probabilitÃ© epsilon, l'action choisie sera la meilleure possible,
+ * avec une probabilitÃ© (1.0 - epsilon) on choisira au hazard une des autres actions. 
  *
  * @author Garcia Pascal
  * @see Table
@@ -16,20 +16,20 @@ public class EpsilonGreedy {
 	private float _epsilon;
 	
 	/**
-	 * Crée une politique pseudo-stochastique
+	 * CrÃ©e une politique pseudo-stochastique
 	 *
-	 * @param e probabilité de choisir la meilleure action
+	 * @param e probabilitÃ© de choisir la meilleure action
 	 */    
 	public EpsilonGreedy(float e) {
 		_epsilon = e;
 	}
 	
 	/**
-	 * Retourne l'action dictée par la politique pseudo-stochastique dans l'etat e
+	 * Retourne l'action dictÃ©e par la politique pseudo-stochastique dans l'etat e
 	 *
-	 * @param t la table contenant les valeurs des différents objets EtatAction
-	 * @param e l'état dans lequel on doit appliquer la politique pseudo-stochastique
-	 * @return l'action selectionnée
+	 * @param t la table contenant les valeurs des diffÃ©rents objets EtatAction
+	 * @param e l'Ã©tat dans lequel on doit appliquer la politique pseudo-stochastique
+	 * @return l'action selectionnÃ©e
 	 */    
 	public int getAction(Table t, State s) {	
 		int bestAction = getBestAction(t, s);
@@ -41,11 +41,11 @@ public class EpsilonGreedy {
 	}
 	
 	/**
-	 * Retourne la meilleure action dans l'état e
+	 * Retourne la meilleure action dans l'Ã©tat e
 	 *
-	 * @param t la table contenant les valeurs des différents objets EtatAction
-	 * @param e l'état dans lequel on doit appliquer la politique pseudo-stochastique
-	 * @return l'action selectionnée
+	 * @param t la table contenant les valeurs des diffÃ©rents objets EtatAction
+	 * @param e l'Ã©tat dans lequel on doit appliquer la politique pseudo-stochastique
+	 * @return l'action selectionnÃ©e
 	 */    
 	public int getBestAction(Table t, State s) {	
 		int[] actions = s.getPossibleActions();
@@ -54,7 +54,7 @@ public class EpsilonGreedy {
 		for (int i = 1; i < actions.length; i++) {
 			float tmp = t.getValue(new StateAction(s,actions[i]));	    
 			if (tmp > bestValue 
-					|| (tmp == bestValue && Math.random() < 0.5) ) { // ajouter de l'aléatoire dans les coups de valeur identique
+					|| (tmp == bestValue && Math.random() < 0.5) ) { // ajouter de l'alÃ©atoire dans les coups de valeur identique
 				bestValue = tmp;
 				bestAction = actions[i];
 			}

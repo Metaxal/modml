@@ -35,13 +35,13 @@ public class Table {
 	}
 	
 	/**
-	 * Retourne la valeur d'un objet EtatAction. Si l'état correspondant à e_a.getEtat() n'existe pas dans la table,
-	 * on crée les entrées dans la table pour tous les objets EtatAction correspondant à
-	 * l'état de e_a.getEtat() et à toutes les actions possibles dans cet état. On associe a chacune de ces
-	 * entrées la valeur 0.0
+	 * Retourne la valeur d'un objet EtatAction. Si l'Ã©tat correspondant Ã  e_a.getEtat() n'existe pas dans la table,
+	 * on crÃ©e les entrÃ©es dans la table pour tous les objets EtatAction correspondant Ã 
+	 * l'Ã©tat de e_a.getEtat() et Ã  toutes les actions possibles dans cet Ã©tat. On associe a chacune de ces
+	 * entrÃ©es la valeur 0.0
 	 *
 	 * @param sA l'objet EtatAction
-	 * @return la valeur associée à cet objet
+	 * @return la valeur associÃ©e Ã  cet objet
 	 */    
 	public float getValue(StateAction sA) {
 		if (!exists(sA.getState())) {
@@ -72,16 +72,16 @@ public class Table {
 	}
 	
 	/**
-	 * Retourne la valeur maximum des différentes entrées dans la table associé à cet état 
-	 * (c'est à dire les différentes entrées ayant pour état cet état et pour action les différentes
-	 * actions possibles dans cet état).<BR> 
-	 * Si on ne trouve aucune entrée dans la table contenant cet état, 
-	 * on crée les entrées dans la table pour tous les objets EtatAction correspondant à
-	 * l'état de e_a.getEtat() et à toutes les actions possibles dans cet état. On associe a chacune de ces
-	 * entrées la valeur 0.0
+	 * Retourne la valeur maximum des diffÃ©rentes entrÃ©es dans la table associÃ© Ã  cet Ã©tat 
+	 * (c'est Ã  dire les diffÃ©rentes entrÃ©es ayant pour Ã©tat cet Ã©tat et pour action les diffÃ©rentes
+	 * actions possibles dans cet Ã©tat).<BR> 
+	 * Si on ne trouve aucune entrÃ©e dans la table contenant cet Ã©tat, 
+	 * on crÃ©e les entrÃ©es dans la table pour tous les objets EtatAction correspondant Ã 
+	 * l'Ã©tat de e_a.getEtat() et Ã  toutes les actions possibles dans cet Ã©tat. On associe a chacune de ces
+	 * entrÃ©es la valeur 0.0
 	 *
 	 * @param e l'objet Etat
-	 * @return la valeur maximum que l'on peut obtenir à partir de cet état
+	 * @return la valeur maximum que l'on peut obtenir Ã  partir de cet Ã©tat
 	 */    
 	public float getMaxValue(State s) {
 		if (!exists(s)) {
@@ -101,15 +101,15 @@ public class Table {
 	}
 	
 	/**
-	 * Met à jour la valeur de l'objet EtatAction avec la valeur val.<BR> 
-	 * Si on ne trouve aucune entrée dans la table contenant l'état de e_a.getEtat(), 
-	 * on crée les entrées dans la table pour tous les objets EtatAction correspondant à
-	 * l'état de e_a.getEtat() et à toutes les actions possibles dans cet état. On associe a chacune de ces
-	 * entrées la valeur 0.0
+	 * Met Ã  jour la valeur de l'objet EtatAction avec la valeur val.<BR> 
+	 * Si on ne trouve aucune entrÃ©e dans la table contenant l'Ã©tat de e_a.getEtat(), 
+	 * on crÃ©e les entrÃ©es dans la table pour tous les objets EtatAction correspondant Ã 
+	 * l'Ã©tat de e_a.getEtat() et Ã  toutes les actions possibles dans cet Ã©tat. On associe a chacune de ces
+	 * entrÃ©es la valeur 0.0
 	 *
 	 * @param e_a l'objet EtatAction
-	 * @param val la valeur associé maintenant avec e_a
-	 * @return la valeur maximum que l'on peut obtenir à partir de cet état
+	 * @param val la valeur associÃ© maintenant avec e_a
+	 * @return la valeur maximum que l'on peut obtenir Ã  partir de cet Ã©tat
 	 */    
 	public void setValue(StateAction sA, float val) {
 		if (!exists(sA.getState())) {

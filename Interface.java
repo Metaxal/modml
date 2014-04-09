@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
-public class Interface implements ClassOpener{
+public class ModML implements ClassOpener{
 	private JFrame                  _frame;
 	private Menu                    _menu;
 	private final JFileChooser      _fileChooser = new JFileChooser(".");
@@ -81,7 +81,7 @@ public class Interface implements ClassOpener{
 	
 	public void classOpened(Object object, Object caller) {
 		if(_objectEngine != null)
-			_objectEngine.terminate(); // supprimer les menus spécifiques	
+			_objectEngine.terminate(); // supprimer les menus spÃ©cifiques	
 		_objectEngine = (ObjectEngine) object;
 		_objectEngine.initInterface(this); // important !
 		_objectEngine.write();
@@ -99,7 +99,7 @@ public class Interface implements ClassOpener{
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Interface();
-				// ici, on pourrait mettre le .class à charger: args[0]
+				// ici, on pourrait mettre le .class Ã  charger: args[0]
 			}
 		});
 	}

@@ -18,7 +18,7 @@ public class TicTacToeHumanPlayer extends TicTacToePlayer {
 	public int joue() {
 		_caseAJouer = -1;
 
-		while(_caseAJouer == -1) ; // on attend d'avoir une case à jouer (attentions aux threads !)
+		while(_caseAJouer == -1) ; // on attend d'avoir une case Ã  jouer (attentions aux threads !)
 
 		return _caseAJouer;
 	}

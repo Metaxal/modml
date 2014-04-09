@@ -71,11 +71,11 @@ public class NNParameters {
 					int iter = (new Integer(_nbIterationsText.getText())).intValue();
 					_engine.setNbIterations(iter);
 
-					// A mettre à la fin car il risque de recréer le RN (donc autant changer les autres parameètres avant.
+					// A mettre Ã  la fin car il risque de recrÃ©er le RN (donc autant changer les autres parameÃ¨tres avant.
 					int nbNeurs = (new Integer(_nbNeuronesText.getText())).intValue();
 					_engine.setNbNeurones(nbNeurs);
 					
-					_engine.nouveauReseau(); // il ne faudrait le faire que lorsque le nombre de neurones a changé ! 
+					_engine.nouveauReseau(); // il ne faudrait le faire que lorsque le nombre de neurones a changÃ© ! 
 				} catch (Exception _) {}
 				
 				setTexts();
