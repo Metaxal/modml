@@ -57,6 +57,7 @@ public abstract class FunctionLearner implements ActionListener {
 		_NNParameters = new NNParameters(this);
 
 		_menuLearn = new JMenu("LearnNN");
+		_menuLearn.setMnemonic('L');
 
 		_paramsItem = new JMenuItem("Parameters");
 		_paramsItem.addActionListener(this);

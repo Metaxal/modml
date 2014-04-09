@@ -20,23 +20,23 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	public class Point {
 		private double _x;
 		private double _y;
-		
+
 		public double x() { return _x; }
 		public double y() { return _y; }
-		
+
 		public Point(double x, double y) {
 			_x = x;
 			_y = y;
 		}
 	}
-	
+
 	protected List _points; // tous dans (-1,-1)->(1,1)
-	
+
 	private int _midx;
 	private int _midy;
 	private int _maxx;
 	private int _maxy;
-	
+
 	private FunctionLearner 	_learner;
 	private JMenu 				_functionMenu;
 	private JMenuItem 			_sinItem;
@@ -44,51 +44,52 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	private JMenuItem 			_gaussItem;
 	private JMenuItem 			_resetItem;
 	private ClassLoadMenu 		_classLoadMenu;
-	
+
 	public List getPoints() { return _points; }
-	
+
 	public FunctionEngine() {
 		super();
-		
+
 		_learner = null;
-	}		
-	
+	}
+
 	public void initInterface(Interface i) {
 		super.initInterface(i);
 		_points = Collections.synchronizedList(new LinkedList());
-		
+
 		_functionMenu = new JMenu("Function");
-		
+		_functionMenu.setMnemonic('F');
+
 		_classLoadMenu = new ClassLoadMenu("Learner", this, FunctionLearner.class, _interface);
 		_functionMenu.add(_classLoadMenu.getMenu());
-		
+
 		_functionMenu.addSeparator();
-		
+
 		_resetItem = new JMenuItem("Reset Points");
 		_resetItem.addActionListener(this);
 		_functionMenu.add(_resetItem);
-		
+
 		_sinItem = new JMenuItem("Sinusoide");
 		_sinItem.addActionListener(this);
 		_functionMenu.add(_sinItem);
-		
+
 		_linItem = new JMenuItem("Linear");
 		_linItem.addActionListener(this);
 		_functionMenu.add(_linItem);
-		
+
 		_gaussItem = new JMenuItem("Gaussian");
 		_gaussItem.addActionListener(this);
 		_functionMenu.add(_gaussItem);
 
 		_interface.getMenu().addMenu(_functionMenu);
 	}
-	
+
 	public final void terminate() {
 		if(_learner != null)
 			_learner.terminate();
 		_interface.getMenu().removeMenu(_functionMenu);
 	}
-	
+
 	public void actionPerformed(ActionEvent event) {
 		if(event.getSource() == _resetItem) {
 			resetPoints();
@@ -108,49 +109,49 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 		}
 		super.actionPerformed(event); // au début de la fonction plutôt non ?
 	}
-	
+
 	public void classOpened(Object object, Object caller) {
 		if(_learner != null)
 			_learner.terminate();
-		_learner = (FunctionLearner)object; 
+		_learner = (FunctionLearner)object;
 		_learner.init(this); // ne pas oublier !
 	}
-	
+
 	public void write() {
 		System.out.println("Vous êtes dans FunctionEngine");
 	}
-	
+
 	public BufferedImage draw(JViewport vp) {
 		Dimension d = vp.getSize();
 		if (d.width <= 0 || d.height <= 0) return null;
-		
+
 		BufferedImage image = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = image.createGraphics();
-		
-		g.setColor(new Color(0,125,0));	    
+
+		g.setColor(new Color(0,125,0));
 		g.fillRect(0, 0, d.width, d.height);
-		
+
 		g.setColor(new Color(0,0,0));
 		g.setStroke(new BasicStroke(3));
-		
+
 		int longueurx = d.width-20;
 		int longueury = d.height-20;
 		_midx = d.width/2;
 		_midy = d.height/2;
 		_maxx = longueurx/2;
 		_maxy = longueury/2;
-		
+
 		g.drawLine( _midx-_maxx, _midy, _midx+_maxx, _midy);
 		g.drawLine( _midx, _midy-_maxy, _midx, _midy+_maxy);
-		
+
 		for(int i = 0; i < _points.size(); i++) {
 			Point p = (Point)_points.get(i);
 			int px = new Double(_midx + _maxx*p.x()).intValue();
 			int py = new Double(_midy + _maxy*p.y()).intValue();
 			g.drawLine(px-3, py, px+3, py);
-			g.drawLine(px, py-3, px, py+3); 
+			g.drawLine(px, py-3, px, py+3);
 		}
-		
+
 		g.setColor(new Color(0,0,160));
 		g.setStroke(new BasicStroke(1));
 		if(_learner != null) {
@@ -165,29 +166,29 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 				int px = new Double(_midx + _maxx*vx).intValue();
 				int py = new Double(_midy + _maxy*vy).intValue();
 				g.drawLine(px2, py2, px, py);
-				
+
 				px2 = px;
 				py2 = py;
 			}
-			
+
 		}
-		
-		
+
+
 		return image;
 	}
-	
+
     public void mouseClicked(int whichButton, int x, int y) {
 		_points.add(new Point((x-_midx)/(_maxx+0.d), (y-_midy)/(_maxy+0.d)));
 		System.out.println("Mouse Clicked in FunctionEngine : (" + x + ", " + y + ")");
 		_interface.redraw();
 	}
 
-	
+
 	public void resetPoints() {
 		_points.clear();
 		_interface.redraw();
 	}
-	
+
 	public void sinFunction() {
 		_points.clear();
 		for(double i=-1.; i < 1.; i+=0.1) {
