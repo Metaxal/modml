@@ -157,7 +157,7 @@ public class NeuralNetworkEns {
                     _alpha * _deltaInputHiddenWeights[i][j] ;
 
                 _inputHiddenWeights[i][j] += _deltaInputHiddenWeights[i][j];
-                //_inputHiddenWeights[i][j] *= .9999999; // Weight decay, penalize large weights
+                //_inputHiddenWeights[i][j] *= .9999999; // Weight decay, penalize large weights. But prevents learning?!
 
             }
         }

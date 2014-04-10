@@ -30,7 +30,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 		}
 	}
 
-	protected List _points; // tous dans (-1,-1)->(1,1)
+	protected List<Point> _points; // tous dans (-1,-1)->(1,1)
 
 	private int _midx;
 	private int _midy;
@@ -45,7 +45,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	private JMenuItem 			_resetItem;
 	private ClassLoadMenu 		_classLoadMenu;
 
-	public List getPoints() { return _points; }
+	public List<Point> getPoints() { return _points; }
 
 	public FunctionEngine() {
 		super();
@@ -161,7 +161,6 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 			int py2 = new Double(_midy + _maxy*vy2).intValue();
 			for(double vx=-1.; vx < 1.; vx += 2/(_maxx+0.)) { // /_maxx ??? -> tous les 2 pixels
 				double vy = _learner.y(vx);
-				//System.out.println("vx = " + vx + " vy = " + vy);
 				if(vy > 1.) vy = 1.; else if(vy < -1.) vy = -1.;
 				int px = new Double(_midx + _maxx*vx).intValue();
 				int py = new Double(_midy + _maxy*vy).intValue();
@@ -178,7 +177,6 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	}
 
     public void mouseClicked(int whichButton, int x, int y) {
-		//System.out.println("Mouse Clicked in FunctionEngine : (" + whichButton + ", " + x + ", " + y + ")");
 		double px = (x-_midx)/(_maxx+0.d);
 		double py = (y-_midy)/(_maxy+0.d);
 		if(whichButton == 1) {

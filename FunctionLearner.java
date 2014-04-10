@@ -119,19 +119,16 @@ public abstract class FunctionLearner implements ActionListener {
 				_stop = true;
 			}
 		};
-		/*Thread worker2 = new Thread() {
-			public void run() {
-				while(!_stop)
-					try {
-						_interface.redraw();
-						Thread.sleep(_refreshSpeed);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-			}
-		};
-		worker2.start();*/
 		worker.start();
+	}
+
+	public double mse() {
+		double e = 0.;
+		for(FunctionEngine.Point p: _engine.getPoints()) {
+			double d = (p.y() - y(p.x()));
+			e += d*d;
+		}
+		return e/2.;
 	}
 
 	public abstract void reset();
