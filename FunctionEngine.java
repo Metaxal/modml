@@ -178,9 +178,36 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	}
 
     public void mouseClicked(int whichButton, int x, int y) {
-		_points.add(new Point((x-_midx)/(_maxx+0.d), (y-_midy)/(_maxy+0.d)));
-		System.out.println("Mouse Clicked in FunctionEngine : (" + x + ", " + y + ")");
+		//System.out.println("Mouse Clicked in FunctionEngine : (" + whichButton + ", " + x + ", " + y + ")");
+		double px = (x-_midx)/(_maxx+0.d);
+		double py = (y-_midy)/(_maxy+0.d);
+		if(whichButton == 1) {
+			_points.add(new Point(px, py));
+		} else if(whichButton == 3) {
+			int imin = findNearestPoint(px, py);
+			if(imin != -1) {
+				_points.remove(imin);
+			}
+		}
 		_interface.redraw();
+	}
+
+	public double sqr(double x) {
+		return x*x;
+	}
+
+	public int findNearestPoint(double x, double y) {
+		double dmin = 0.;
+		int imin = -1;
+		for(int i=0; i < _points.size(); i++) {
+			Point p = (Point)_points.get(i);
+			double d = sqr(p.x() - x) + sqr(p.y() - y);
+			if(d <= dmin || imin == -1) {
+				dmin = d;
+				imin = i;
+			}
+		}
+		return imin;
 	}
 
 
@@ -200,7 +227,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	public void linFunction() {
 		_points.clear();
 		for(double i=-1.; i < 1.; i+=0.1) {
-			_points.add(new Point(i, i/2.));
+			_points.add(new Point(i, i/2.-.3));
 		}
 		_interface.redraw();
 	}
@@ -208,7 +235,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 	public void gaussFunction() {
 		_points.clear();
 		for(double i=-1.; i < 1.; i+=0.1) {
-			_points.add(new Point(i, -Math.exp(-i*i*10.)));
+			_points.add(new Point(i, -Math.exp(-i*i*10.)+.2));
 		}
 		_interface.redraw();
 	}

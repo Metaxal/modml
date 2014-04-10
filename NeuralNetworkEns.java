@@ -156,7 +156,8 @@ public class NeuralNetworkEns {
                 _deltaInputHiddenWeights[i][j] = _epsilon * delta_hidden[j] * _inputs[i] +
                     _alpha * _deltaInputHiddenWeights[i][j] ;
 
-                _inputHiddenWeights[i][j] += _deltaInputHiddenWeights[i][j] ;
+                _inputHiddenWeights[i][j] += _deltaInputHiddenWeights[i][j];
+                //_inputHiddenWeights[i][j] *= .9999999; // Weight decay, penalize large weights
 
             }
         }
