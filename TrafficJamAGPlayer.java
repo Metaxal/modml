@@ -34,7 +34,7 @@ public abstract class TrafficJamAGPlayer extends TrafficJamPlayer implements Act
 
 	public int nbCases() { return _engine.nbCases(); }
 	public int joueCase(int[] tableau, int c) { return _engine.joueCase(tableau, c); }
-	public int[] copieTableauJeu() { return (int[])_engine.tableau().clone(); }
+	public int[] copieTableauJeu() { return _engine.tableau().clone(); }
 
 	public TrafficJamAGPlayer() {
 		super();
