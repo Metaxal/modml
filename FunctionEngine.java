@@ -144,8 +144,7 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 		g.drawLine( _midx-_maxx, _midy, _midx+_maxx, _midy);
 		g.drawLine( _midx, _midy-_maxy, _midx, _midy+_maxy);
 
-		for(int i = 0; i < _points.size(); i++) {
-			Point p = (Point)_points.get(i);
+		for(Point p: _points) {
 			int px = new Double(_midx + _maxx*p.x()).intValue();
 			int py = new Double(_midy + _maxy*p.y()).intValue();
 			g.drawLine(px-3, py, px+3, py);
@@ -182,9 +181,9 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 		if(whichButton == 1) {
 			_points.add(new Point(px, py));
 		} else if(whichButton == 3) {
-			int imin = findNearestPoint(px, py);
-			if(imin != -1) {
-				_points.remove(imin);
+			Point pmin = findNearestPoint(px, py);
+			if(pmin != null) {
+				_points.remove(pmin);
 			}
 		}
 		_interface.redraw();
@@ -194,18 +193,17 @@ public class FunctionEngine extends ObjectEngine implements ClassOpener {
 		return x*x;
 	}
 
-	public int findNearestPoint(double x, double y) {
+	public Point findNearestPoint(double x, double y) {
 		double dmin = 0.;
-		int imin = -1;
-		for(int i=0; i < _points.size(); i++) {
-			Point p = (Point)_points.get(i);
+		Point pmin = null;
+		for(Point p: _points) {
 			double d = sqr(p.x() - x) + sqr(p.y() - y);
-			if(d <= dmin || imin == -1) {
+			if(d <= dmin || pmin == null) {
 				dmin = d;
-				imin = i;
+				pmin = p;
 			}
 		}
-		return imin;
+		return pmin;
 	}
 
 

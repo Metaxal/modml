@@ -31,7 +31,7 @@ public class FunctionNNLearnerEns extends FunctionLearner {
 	 * mais il faut ensuite répéter cette séquence n fois.
 	 * @param liste : la liste des points, les exemples d'apprentissage
 	 */
-	public void learn(List liste) {
+	public void learn(List<FunctionEngine.Point> liste) {
 		if(liste.size() == 0)
 			return;
 
@@ -41,7 +41,7 @@ public class FunctionNNLearnerEns extends FunctionLearner {
 		double[] output = new double[1];
 		for(int i = 0; i < nbIterations() && !stop(); i++) {
 			int n = i % liste.size();//(int)Math.floor(Math.random()*liste.size());
-			FunctionEngine.Point p = (FunctionEngine.Point)liste.get(n);
+			FunctionEngine.Point p = liste.get(n);
 			input[0] = p.x();
 			output[0] = p.y();
 			_net.update(input, output);

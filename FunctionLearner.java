@@ -133,7 +133,7 @@ public abstract class FunctionLearner implements ActionListener {
 
 	public abstract void reset();
 
-	public abstract void learn(List liste);
+	public abstract void learn(List<FunctionEngine.Point> liste);
 
 	public abstract double y(double x);
 
