@@ -22,11 +22,14 @@ public class NeuralNetworkEns {
     private int        _nbOutput; // nombre de sorties, nombre de neurones de sortie
     private double     _epsilon; // taux d'apprentissage
     private double     _alpha; // moment d'apprentissage, inertie
+    private double     _lambda; // weight decay
 
     public double epsilon() { return _epsilon; }
     public void setEpsilon(double e) { _epsilon = e; }
     public double alpha() { return _alpha; }
     public void setAlpha(double a) { _alpha = a; }
+    public double lambda() { return _lambda; }
+    public void setLambda(double l) { _lambda = l; }
 
     /*
      * Constructeur : Création d'un nouveau réseau de neurones
@@ -36,12 +39,13 @@ public class NeuralNetworkEns {
      * @param epsilon : facteur d'apprentissage
      * @param alpha : moment d'apprentissage / inertie
      */
-    public NeuralNetworkEns(int nbInput, int nbHidden, int nbOutput, double epsilon, double alpha) {
+    public NeuralNetworkEns(int nbInput, int nbHidden, int nbOutput, double epsilon, double alpha, double lambda) {
         _nbInput            = nbInput+1; // +1 pour le biais
-        _nbHidden           = nbHidden;
+        _nbHidden           = nbHidden+1; // +1 pour le biais
         _nbOutput           = nbOutput;
         _epsilon            = epsilon;
         _alpha              = alpha;
+        _lambda             = lambda;
 
         // Création des tableaux :
         _inputs = new double[_nbInput];
@@ -54,7 +58,7 @@ public class NeuralNetworkEns {
 
         // Initialisation des poids à des valeurs aléatoires, voir :
         // Fernández-Redondo, Mercedes, and Carlos Hernández-Espinosa. "Weight initialization methods for multilayer feedforward." In ESANN, pp. 119-124. 2001.
-        // Actually, initializing in [-8, 8] works pretty well because of the high values of the coordinates
+        // Actually, initializing in [-8, 8] works pretty well because of the high values of the coordinates (but now it's normalized in [-1;1] so not useful anymore)
         for (int i = 0; i < _nbInput; i++)
             for (int j = 0; j < _nbHidden; j++)
                 _inputHiddenWeights[i][j] = (Math.random()*2.-1.)*.05; // [-0.05; 0.05]
@@ -88,6 +92,7 @@ public class NeuralNetworkEns {
         // calcul de la fonction d'activation de chaque neurone caché :
         for (int i = 0; i < _nbHidden; i++)
             _hiddens[i] = sigmoid(_hiddens[i]) ;
+        _hiddens[0] = 1.; // on force le biais à 1 sur la première unité cachée
 
         // somme pondérée des activations des neurones cachés pour chaque sortie :
         for (int i = 0; i < _nbOutput; i++) {
@@ -122,6 +127,8 @@ public class NeuralNetworkEns {
         // Calcul de l'erreur commise par chaque neurone de sortie :
         for (int i = 0; i < _nbOutput; i++)
             delta_exit[i] = (output[i] - _outputs[i]);
+            
+		//System.out.println("Output error:\n" + Arrays.deepToString(delta_exit).replaceAll("], ", "],").replaceAll(",", "\n "));
 
         // vecteur de l'erreur répartie sur les neurones cachés :
         double[] delta_hidden = new double[_nbHidden];
@@ -156,8 +163,10 @@ public class NeuralNetworkEns {
                 _deltaInputHiddenWeights[i][j] = _epsilon * delta_hidden[j] * _inputs[i] +
                     _alpha * _deltaInputHiddenWeights[i][j] ;
 
+                _inputHiddenWeights[i][j] *= 1. - _lambda; // Weight decay, penalize large weights.
+                // Note: This works to prevent the large weights problem for the linear curve, 
+                // but prevents the net from learning the Gaussian and Sinus curves...
                 _inputHiddenWeights[i][j] += _deltaInputHiddenWeights[i][j];
-                //_inputHiddenWeights[i][j] *= .9999999; // Weight decay, penalize large weights. But prevents learning?!
 
             }
         }
@@ -168,7 +177,7 @@ public class NeuralNetworkEns {
      * Fonction d'activation
      */
     private double sigmoid(double x) {
-        return 1.0 / (1.0 + Math.exp(-x)) ;
+        return 1.0 / (1.0 + Math.exp(-x));
     }
 
     /*

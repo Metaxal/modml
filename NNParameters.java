@@ -20,6 +20,7 @@ public class NNParameters {
     final JTextField _nbIterationsText;
     final JTextField _epsilonText;
     final JTextField _alphaText;
+    final JTextField _lambdaText;
     final JTextField _speedText;
 
     public JFrame getFrame() { return _frame; }
@@ -31,6 +32,7 @@ public class NNParameters {
         _epsilonText = new JTextField(10);
         _alphaText = new JTextField(10);
         _speedText = new JTextField(10);
+        _lambdaText = new JTextField(10);
 
         setTexts();
 
@@ -46,6 +48,9 @@ public class NNParameters {
 
         p.add(new JLabel("Moment d'inertie (alpha)", JLabel.LEFT));
         p.add(_alphaText);
+
+        p.add(new JLabel("Weight decay", JLabel.LEFT));
+        p.add(_lambdaText);
 
         p.add(new JLabel("# Iterations", JLabel.LEFT));
         p.add(_nbIterationsText);
@@ -64,6 +69,9 @@ public class NNParameters {
 
                     double epsilon = (new Double(_epsilonText.getText())).doubleValue();
                     _engine.setEpsilon(epsilon);
+
+                    double lambda = (new Double(_lambdaText.getText())).doubleValue();
+                    _engine.setLambda(lambda);
 
                     int speed = (new Integer(_speedText.getText())).intValue();
                     _engine.setRefreshSpeed(speed);
@@ -126,6 +134,7 @@ public class NNParameters {
     public void setTexts() {
         _epsilonText.setText("" + _engine.epsilon());
         _alphaText.setText("" + _engine.alpha());
+        _lambdaText.setText("" + _engine.lambda());
         _nbNeuronesText.setText("" + _engine.nbNeurones());
         _speedText.setText("" + _engine.refreshSpeed());
         _nbIterationsText.setText("" + _engine.nbIterations());

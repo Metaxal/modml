@@ -14,7 +14,7 @@ public class FunctionNNLearnerEns extends FunctionLearner {
 	}
 
 	public void nouveauReseau() {
-		_net = new NeuralNetworkEns(1, nbNeurones(), 1, epsilon(), alpha()) ;
+		_net = new NeuralNetworkEns(1, nbNeurones(), 1, epsilon(), alpha(), lambda()) ;
 		// 1 entrée, N neurones cachés, 1 sortie
 	}
 
@@ -40,7 +40,9 @@ public class FunctionNNLearnerEns extends FunctionLearner {
 		double[] input = new double[1];
 		double[] output = new double[1];
 		for(int i = 0; i < nbIterations() && !stop(); i++) {
-			int n = i % liste.size();//(int)Math.floor(Math.random()*liste.size());
+			//int n = i % liste.size();
+			// or:
+			int n = (int)Math.floor(Math.random()*liste.size());
 			FunctionEngine.Point p = liste.get(n);
 			input[0] = p.x();
 			output[0] = p.y();

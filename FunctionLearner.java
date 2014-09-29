@@ -24,6 +24,7 @@ public abstract class FunctionLearner implements ActionListener {
 	protected int				_nbNeurones;
 	protected double 			_epsilon;
 	protected double			_alpha;
+	protected double            _lambda;
 	protected int				_refreshSpeed;
 	protected int				_nbIterations;
 
@@ -38,6 +39,8 @@ public abstract class FunctionLearner implements ActionListener {
 	public boolean stop() 				{ return _stop; }
 	public int nbIterations() 			{ return _nbIterations; }
 	public void setNbIterations(int n) 	{ _nbIterations = n; }
+	public double lambda()                { return _lambda; }
+	public void setLambda(double l)     { if(l >= 0 && l < 1.) _lambda = l; }
 
 	public FunctionLearner() {
 		super();
@@ -46,7 +49,8 @@ public abstract class FunctionLearner implements ActionListener {
 		_nbIterations = 50000;
 		_nbNeurones = 5;
 		_epsilon = 0.01;
-		_alpha = 0.5;
+		_alpha = 0.9;
+		_lambda = 0.0001;
 		_refreshSpeed = 2000;
 	}
 
